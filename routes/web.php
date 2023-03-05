@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\Admin\DashboardController as DashboardController;
+use App\Http\Controllers\Admin\DashboardController as DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +16,13 @@ use App\Http\Controller\Admin\DashboardController as DashboardController;
 */
 
 Route::get('/', function () {
-    return view('');
+    return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController:: class, 'index'] )->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware(['auth', 'verified'])->prefix('admin')->namespace('Admin')->group(function(){
+    Route::get('/dashboard', [DashboardController:: class, 'index'] )->name('dashboard');;
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
