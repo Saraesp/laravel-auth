@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
-use App\Http\Controllers\Controller;
 
 class PostController extends Controller
 {
@@ -39,7 +40,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Post::generateSlug($request->title);
+
+        $form_data['slug'] = $slug;
+
+        $newPost = new Post();
+        $newPost->fill($form_data);
+
+        $newPost->save();
+
+        return redirect()->route('admin.posts.index')->with('message', 'Post creato corretamente');
     }
 
     /**

@@ -12,13 +12,13 @@
                         <label for="" class="control-label">
                             Titolo
                         </label>
-                        <input type="text" name="titolo" id="titolo" class="form-control" placeholder="Titolo">
+                        <input type="text" name="title" id="title" class="form-control" placeholder="Titolo">
                     </div>
                     <div class="form-group my-3">
                         <label for="" class="control-label">
                             Contenuto
                         </label>
-                        <textarea name="contenuto" id="contenuto" class="form-control" placeholder="Contenuto"> </textarea>
+                        <textarea name="content" id="content" class="form-control" placeholder="Contenuto"> </textarea>
                     </div>
                     <div class="form-group my-3">
                         <button type="submit" class="btn btn-sm btn-success">Salva post</button>
