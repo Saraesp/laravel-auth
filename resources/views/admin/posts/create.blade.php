@@ -6,7 +6,7 @@
         <div class="col-12 my-5">
             <h2>Aggiumgi nuovo post</h2>
         </div>
-        @if($error->amy())
+        @if($errors->any())
             <div class="alert alert-danger">
                 <ul class="list-unstyled">
                     @foreach($errors->all() as $error)

@@ -28,7 +28,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach($posts as $post)
+                    @forelse($posts as $post)
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
@@ -49,7 +49,13 @@
                             </form>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td scope="row">
+                            Nessun Post, aggiungi uno da qui: <a href="{{ route('admin.posts.create') }}">qui</a>
+                        </td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
