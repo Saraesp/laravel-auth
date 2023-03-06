@@ -34,9 +34,19 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->slug}}</td>
                         <td>
-                            <a href="{{route('admin.posts.show', $post->slug)}}" class="btn btn-sm btn-square btn-primary">
+                            <a href="{{ route('admin.posts.show', $post->slug) }}" class="btn btn-sm btn-square btn-primary">
                                 <i class="fas fa-eye"></i>
                             </a>
+                            <a href="{{ route('admin.posts.edit', $post->slug) }}" class="btn btn-sm btn-square btn-warning">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <form action="{{ route('admin.posts.destroy', $post->slug) }}" class="d-inline-block"  method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-square btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

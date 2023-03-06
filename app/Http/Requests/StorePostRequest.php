@@ -28,4 +28,14 @@ class StorePostRequest extends FormRequest
             'content' => ['nullable'],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Il titolo è richiesto',
+            'title.unique' => 'E\' già presente un post con questo titolo',
+            'title.max' => 'Il titolo è troppo lungo',
+
+        ];
+    }
 }
